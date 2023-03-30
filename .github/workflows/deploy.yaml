@@ -35,11 +35,11 @@ jobs:
         # run: npm run dev
 
       # Share artifact inside workflow
-      - name: Share artifact inside workflow
-        uses: actions/upload-artifact@v1
-        with:
-          name: next-github-actions-build
-          path: build
+      # - name: Share artifact inside workflow
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: next-github-actions-build
+      #     path: build
 
 
   deploy:
@@ -49,10 +49,10 @@ jobs:
     needs: build
     steps:
       # Download previously shared build
-      - name: Get artifact
-        uses: actions/download-artifact@v1
-        with:
-          name: next-github-actions-build  
+      # - name: Get artifact
+      #   uses: actions/download-artifact@v1
+      #   with:
+      #     name: next-github-actions-build  
 
 
       # - name: Configure AWS credentials
