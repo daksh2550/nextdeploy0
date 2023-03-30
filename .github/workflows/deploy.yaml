@@ -28,8 +28,11 @@ jobs:
           CI: true 
 
 
-      - name: ruun next 
-        run: npm run dev 
+      - name: next buildt 
+        run: npm run build 
+
+        #       - name: next run dev 
+        # run: npm run dev
 
       # Share artifact inside workflow
       - name: Share artifact inside workflow
