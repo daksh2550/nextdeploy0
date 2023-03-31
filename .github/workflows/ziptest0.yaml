@@ -1,4 +1,4 @@
-name: artifacts test workflow 
+name: zip test0 workflow
 
 on:
   workflow_dispatch:
