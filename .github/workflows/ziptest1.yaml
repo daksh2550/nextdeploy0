@@ -33,7 +33,7 @@ jobs:
 
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: downloads
+        # working-directory: download
 
       # - name: making a zip file of text file 
       #   run: |
