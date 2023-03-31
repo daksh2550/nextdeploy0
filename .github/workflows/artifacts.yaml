@@ -1,4 +1,4 @@
-name: artifacts test
+name: artifacts test workflow 
 
 on:
   workflow_dispatch:
@@ -16,10 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Step 1 - Create a temporary artifact downloads folder
+      - name: create directory name downloads
         run: mkdir downloads
         
-      - name: step 2 - Add artifacts to publish to the temp folder
+      - name: cd to downloads and making txt files 
         run: |
           cd downloads
           echo 'dx0'    > daksh_0.txt
@@ -27,7 +27,7 @@ jobs:
           echo 'dx2'  > daksh_2.txt
           cd ..
     
-      - name: Step 3 - Use the Upload Artifact GitHub Action
+      - name: Upload Artifact GitHub Action
         uses: actions/upload-artifact@v3
         with: 
           name: testartifacts
