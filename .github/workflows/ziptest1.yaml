@@ -1,4 +1,4 @@
-name: zip test0 workflow
+name: zip test1 workflow
 
 on:
   workflow_dispatch:
