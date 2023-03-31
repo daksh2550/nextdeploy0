@@ -32,7 +32,7 @@ jobs:
           CI: true 
 
       - name: Display structure of downloaded files
-        run: ls -R
+        run: ls -a
         # working-directory: download
 
       # - name: making a zip file of text file 
