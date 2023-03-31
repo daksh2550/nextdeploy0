@@ -1,0 +1,62 @@
+name: zip test0 workflow
+
+on:
+  workflow_dispatch:
+    
+  # push:
+  #   branches:
+  #       - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use node js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: create directory name downloads
+        run: mkdir downloads
+        
+      - name: cd to downloads and install-build npm
+        run: |
+          cd downloads
+          npm install
+          npm run build
+          cd ..
+        env: 
+          CI: true 
+
+      # - name: making a zip file of text file 
+      #   run: |
+      #     cd downloads
+      #     zip -r textzip.zip daksh_0.txt daksh_1.txt daksh_2.txt
+      #     cd .. 
+
+      - name: Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v3
+        with: 
+          name: testartifacts
+          path: downloads
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # - name: Download artifacts
+
+      - uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: testartifacts
+          path: downloads
+    
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: downloads
