@@ -99,3 +99,13 @@ jobs:
           source: "/home/runner/work/nextdeploy0/nextdeploy0/next.zip"
           target: "/home/ubuntu/deploy"
 
+      - name: SSH deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username:  ${{ secrets.USER }}
+          key:  ${{ secrets.KEY }}
+          port:  ${{ secrets.PORT }}
+            cd /home/ubuntu/deploy/github/workspace
+            unzip next.zip    
+
