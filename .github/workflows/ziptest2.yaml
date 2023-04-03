@@ -55,6 +55,12 @@ jobs:
           pwdvar=$(pwd)
           echo "The present working directory is: $pwdvar"
 
+
+      - name: list directory of next file 
+        run:  |
+          cd next.zip 
+          ls -a     
+
   #     - name: Upload Artifact GitHub Action
   #       uses: actions/upload-artifact@v2
   #       with: 
