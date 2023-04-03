@@ -56,9 +56,9 @@ jobs:
           echo "The present working directory is: $pwdvar"
 
 
-      - name: list directory of next file 
-        run:  |
-          zcat next.zip 
+      # - name: list directory of next file 
+      #   run:  |
+      #     zcat next.zip 
               
 
       - name: Upload Artifact GitHub Action
