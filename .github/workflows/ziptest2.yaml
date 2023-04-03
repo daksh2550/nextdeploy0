@@ -110,6 +110,7 @@ jobs:
           script: |
             cd deploy/github/workspace/
             ls
+            unzip -l next.zip
 
 
 
