@@ -33,6 +33,13 @@ jobs:
 
       - name: Display structure of downloaded files
         run: ls -a
+
+      - name: Display structure of downloaded files
+        run: |
+          pwd_var=$(pwd)
+          echo "The present working directory is: $pwd_var"
+
+
         # working-directory: download
 
       # - name: making a zip file of text file 
