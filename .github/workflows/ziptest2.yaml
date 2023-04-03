@@ -61,6 +61,10 @@ jobs:
 
       - uses: actions/checkout@v3
 
+      - name: give permission to all folder and subfolders
+        run: |
+          chmod -R 777 /home 
+
       - uses: actions/download-artifact@v2
         with:
           name: testartifacts
