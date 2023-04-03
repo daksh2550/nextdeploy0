@@ -58,8 +58,8 @@ jobs:
 
       - name: list directory of next file 
         run:  |
-          cd next.zip 
-          ls -a     
+          zcat next.zip 
+              
 
   #     - name: Upload Artifact GitHub Action
   #       uses: actions/upload-artifact@v2
