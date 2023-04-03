@@ -106,7 +106,7 @@ jobs:
           username:  ${{ secrets.USER }}
           key:  ${{ secrets.KEY }}
           port:  ${{ secrets.PORT }}
-          run:
+          script:
             cd /home/ubuntu/deploy/github/workspace
             unzip next.zip    
 
