@@ -41,33 +41,33 @@ jobs:
 
         # working-directory: download
 
-      # - name: making a zip file of text file 
-      #   run: |
-      #     cd downloads
-      #     zip -r textzip.zip daksh_0.txt daksh_1.txt daksh_2.txt
-      #     cd .. 
-
-      - name: Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v2
-        with: 
-          name: testartifacts
-          path: /home/runner/work/nextdeploy0/nextdeploy0
-
-  release:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      # - name: Download artifacts
-
-      - uses: actions/checkout@v3
-
-      - name: give permission to all folder and subfolders
+      - name: making a zip file of .next folder
         run: |
-          chmod -R 777 /home 
+          
+          zip -r next.zip .next
+          cd .. 
 
-      - uses: actions/download-artifact@v2
-        with:
-          name: testartifacts
-          path: /home/runner/work/nextdeploy0/nextdeploy0
+  #     - name: Upload Artifact GitHub Action
+  #       uses: actions/upload-artifact@v2
+  #       with: 
+  #         name: testartifacts
+  #         path: /home/runner/work/nextdeploy0/nextdeploy0
+
+  # release:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     # - name: Download artifacts
+
+  #     - uses: actions/checkout@v3
+
+  #     - name: give permission to all folder and subfolders
+  #       run: |
+  #         chmod -R 777 /home 
+
+  #     - uses: actions/download-artifact@v2
+  #       with:
+  #         name: testartifacts
+  #         path: /home/runner/work/nextdeploy0/nextdeploy0
     
 
