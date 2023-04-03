@@ -61,27 +61,22 @@ jobs:
           zcat next.zip 
               
 
-  #     - name: Upload Artifact GitHub Action
-  #       uses: actions/upload-artifact@v2
-  #       with: 
-  #         name: testartifacts
-  #         path: /home/runner/work/nextdeploy0/nextdeploy0
+      - name: Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: testartifacts
+          path: /home/runner/work/nextdeploy0/nextdeploy0/next.zip
 
-  # release:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #     # - name: Download artifacts
-
-  #     - uses: actions/checkout@v3
-
-  #     - name: give permission to all folder and subfolders
-  #       run: |
-  #         chmod -R 777 /home 
-
-  #     - uses: actions/download-artifact@v2
-  #       with:
-  #         name: testartifacts
-  #         path: /home/runner/work/nextdeploy0/nextdeploy0
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # - name: Download artifacts
+      - uses: actions/checkout@v3
+      - name: download artifacts 
+        uses: actions/download-artifact@v2
+        with:
+          name: testartifacts
+          path: /home/runner/work/nextdeploy0/nextdeploy0
     
 
