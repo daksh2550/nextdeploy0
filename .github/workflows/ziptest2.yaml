@@ -108,5 +108,6 @@ jobs:
           port:  ${{ secrets.PORT }}
           script:
             cd /home/ubuntu/deploy/github/workspace
-            unzip next.zip    
+            ls -a  
+            # unzip next.zip  
 
