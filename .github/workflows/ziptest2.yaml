@@ -30,7 +30,7 @@ jobs:
         env: 
           CI: true 
 
-      - name: Display structure of downloaded files
+      - name: Display structure of files
         run: ls -a
 
       - name: find the present working directiory path
@@ -46,6 +46,9 @@ jobs:
           
           zip -r next.zip .next
           cd .. 
+
+      - name: Display structure of file after zip file 
+        run: ls -a
 
   #     - name: Upload Artifact GitHub Action
   #       uses: actions/upload-artifact@v2
