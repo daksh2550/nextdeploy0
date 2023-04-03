@@ -78,5 +78,7 @@ jobs:
         with:
           name: testartifacts
           path: /home/runner/work/nextdeploy0/nextdeploy0
-    
+          
+      - name: Display structure of files
+        run: ls -a
 
