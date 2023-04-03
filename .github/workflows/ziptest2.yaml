@@ -33,7 +33,7 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -a
 
-      - name: Display structure of downloaded files
+      - name: find the present working directiory path
         run: |
           pwd_var=$(pwd)
           echo "The present working directory is: $pwd_var"
@@ -47,23 +47,23 @@ jobs:
       #     zip -r textzip.zip daksh_0.txt daksh_1.txt daksh_2.txt
       #     cd .. 
 
-      # - name: Upload Artifact GitHub Action
-      #   uses: actions/upload-artifact@v2
-      #   with: 
-      #     name: testartifacts
-      #     path: downloads
+      - name: Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: testartifacts
+          path: /home/runner/work/nextdeploy0/nextdeploy0
 
-  # release:
-  #   runs-on: ubuntu-latest
-  #   needs: build
-  #   steps:
-  #     # - name: Download artifacts
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # - name: Download artifacts
 
-  #     - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-  #     - uses: actions/download-artifact@v2
-  #       with:
-  #         name: testartifacts
-  #         path: downloads
+      - uses: actions/download-artifact@v2
+        with:
+          name: testartifacts
+          path: /home/runner/work/nextdeploy0/nextdeploy0
     
 
