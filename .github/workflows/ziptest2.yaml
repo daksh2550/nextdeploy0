@@ -112,7 +112,7 @@ jobs:
             ls
             unzip -l next.zip
             pwd
-            cd~
+            cd ~
             touch demo.txt
 
 
