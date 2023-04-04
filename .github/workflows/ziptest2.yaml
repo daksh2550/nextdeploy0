@@ -124,8 +124,8 @@ jobs:
           port:  ${{ secrets.PORT }}
           script: |
             cd deploy/github/workspace/
-            mkdir tmp
-            unzip -l next.zip > /~deploy/github/workspace/tmp
+            mkdir 
+            unzip -l next.zip > ~/deploy/github/workspace/
 
 
 
