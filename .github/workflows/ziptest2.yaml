@@ -111,6 +111,7 @@ jobs:
             cd deploy/github/workspace/
             ls
             unzip -l next.zip
+            pwd
 
 
 
