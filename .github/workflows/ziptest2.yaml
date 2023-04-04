@@ -100,6 +100,21 @@ jobs:
           target: "/home/ubuntu/deploy"
   
 
+      # - name: unzip by ssh protocol
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username:  ${{ secrets.USER }}
+      #     key:  ${{ secrets.KEY }}
+      #     port:  ${{ secrets.PORT }}
+      #     script: |
+      #       cd deploy/github/workspace/
+      #       ls
+      #       unzip -l next.zip
+      #       pwd
+      #       cd ~
+      #       touch demo.txt
+
       - name: unzip by ssh protocol
         uses: appleboy/ssh-action@master
         with:
@@ -109,11 +124,8 @@ jobs:
           port:  ${{ secrets.PORT }}
           script: |
             cd deploy/github/workspace/
-            ls
-            unzip -l next.zip
-            pwd
-            cd ~
-            touch demo.txt
+            mkdir tmp
+            unzip -l next.zip > /~deploy/github/workspace/tmp
 
 
 
