@@ -114,9 +114,10 @@ jobs:
       #       pwd
       #       cd ~
       #       touch demo.txt
+
       # unzip -l next.zip > ~/deploy/github/workspace/tmp
       # cd deploy/github/workspace/
-      # cd /home/ubuntu
+      # cd /home/ubuntu     
       # mkdir test
 
 
