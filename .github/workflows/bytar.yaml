@@ -1,0 +1,142 @@
+name: using tar type
+
+on:
+  workflow_dispatch:
+    
+  # push:
+  #   branches:
+  #       - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use node js
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # - name: create directory name downloads
+        # run: mkdir downloads
+        
+      - name: cd to downloads and install-build npm
+        run: |
+          npm install
+          npm run build
+        env: 
+          CI: true 
+
+      - name: Display structure of files
+        run: ls -a
+
+      - name: find the present working directiory path
+        run: |
+          pwd_var=$(pwd)
+          echo "The present working directory is: $pwd_var"
+
+
+        # working-directory: download
+
+      - name: making a tar file of .next folder
+        run: |
+          tar cvf tarnext.tar .next
+          cd .. 
+
+      - name: Display structure of file after zip file 
+        run: ls -a
+
+      - name: find the present working directiory path
+        run: |
+          pwdvar=$(pwd)
+          echo "The present working directory is: $pwdvar"
+
+
+      # - name: list directory of next file 
+      #   run:  |
+      #     zcat next.zip 
+              
+
+      - name: Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+          name: tar_artifacts
+          path: /home/runner/work/nextdeploy0/nextdeploy0/tarnext.tar
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      # - name: Download artifacts
+      - uses: actions/checkout@v3
+      - name: download artifacts 
+        uses: actions/download-artifact@v2
+        with:
+          name: tar_artifacts
+          path: /home/runner/work/nextdeploy0/nextdeploy0
+          
+      - name: Display structure of files
+        run: ls -a
+ 
+      # - name: SSH deploy
+        # uses: appleboy/ssh-action@master
+        # with:
+        #   host: ${{ secrets.HOST }}
+        #   username:  ${{ secrets.USER }}
+        #   key:  ${{ secrets.KEY }}
+        #   port:  ${{ secrets.PORT }}
+
+      - name: Move file to EC2 by scp protocol
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY}}
+          source: "/home/runner/work/nextdeploy0/nextdeploy0/tarnext.tar"
+          target: "/home/ubuntu/deploy"
+  
+
+      # - name: unzip by ssh protocol
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username:  ${{ secrets.USER }}
+      #     key:  ${{ secrets.KEY }}
+      #     port:  ${{ secrets.PORT }}
+      #     script: |
+      #       cd deploy/github/workspace/
+      #       ls
+      #       unzip -l next.zip
+      #       pwd
+      #       cd ~
+      #       touch demo.txt
+
+      # unzip -l next.zip > ~/deploy/github/workspace/tmp
+      # cd deploy/github/workspace/
+      # cd /home/ubuntu     
+      # mkdir test
+
+
+      - name: unzip by ssh protocol
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username:  ${{ secrets.USER }}
+          key:  ${{ secrets.KEY }}
+          port:  ${{ secrets.PORT }}
+          script: |
+            cd deploy/github/workspace/
+            ls
+            tar xvf tarnext.tar ~/home/ubuntu/test
+            pwd
+
+
+            
+
+
+
+
+
