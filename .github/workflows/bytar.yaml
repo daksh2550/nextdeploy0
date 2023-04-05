@@ -130,7 +130,7 @@ jobs:
           script: |
             cd deploy/github/workspace/
             ls
-            tar xvf tarnext.tar ~/home/ubuntu/test
+            tar xvf tarnext.tar 
             pwd
 
 
