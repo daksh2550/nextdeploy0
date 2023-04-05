@@ -129,6 +129,11 @@ jobs:
             cd /home/ubuntu
             mkdir test
             pwd
+            cd deploy/github/workspace/
+            cp next.zip /home/ubuntu/test
+            cd ~/home/ubuntu/test
+            unzip next.zip
+            pwd
 
             
 
