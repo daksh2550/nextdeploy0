@@ -114,6 +114,9 @@ jobs:
       #       pwd
       #       cd ~
       #       touch demo.txt
+      # unzip -l next.zip > ~/deploy/github/workspace/tmp
+      # cd deploy/github/workspace/
+
 
       - name: unzip by ssh protocol
         uses: appleboy/ssh-action@master
@@ -123,8 +126,12 @@ jobs:
           key:  ${{ secrets.KEY }}
           port:  ${{ secrets.PORT }}
           script: |
-            cd deploy/github/workspace/
-            unzip -l next.zip > ~/deploy/github/workspace/tmp
+            cd /home/ubuntu
+            mkdir test
+            pwd
+
+            
+
 
 
 
