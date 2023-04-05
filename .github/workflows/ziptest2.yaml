@@ -131,7 +131,6 @@ jobs:
             cd ~/deploy/github/workspace/
             pwd
             cp next.zip /home/ubuntu/test
-            cd ~
             cd ~/home/ubuntu/test
             unzip next.zip
             pwd
