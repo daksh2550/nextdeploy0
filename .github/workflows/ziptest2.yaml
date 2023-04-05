@@ -128,12 +128,12 @@ jobs:
           key:  ${{ secrets.KEY }}
           port:  ${{ secrets.PORT }}
           script: |
-            cd ~/deploy/github/workspace/
+            cd deploy/github/workspace/
+            ls
+            unzip -l next.zip
             pwd
-            cp next.zip /home/ubuntu/test
-            cd ~/home/ubuntu/test
-            unzip next.zip
-            pwd
+            cd ~
+            touch demo.txt
 
             
 
