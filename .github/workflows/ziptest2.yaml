@@ -116,6 +116,8 @@ jobs:
       #       touch demo.txt
       # unzip -l next.zip > ~/deploy/github/workspace/tmp
       # cd deploy/github/workspace/
+      # cd /home/ubuntu
+      # mkdir test
 
 
       - name: unzip by ssh protocol
@@ -126,11 +128,11 @@ jobs:
           key:  ${{ secrets.KEY }}
           port:  ${{ secrets.PORT }}
           script: |
-            cd /home/ubuntu
-            mkdir test
             pwd
-            cd deploy/github/workspace/
+            cd ~
+            cd ~/deploy/github/workspace/
             cp next.zip /home/ubuntu/test
+            cd ~
             cd ~/home/ubuntu/test
             unzip next.zip
             pwd
